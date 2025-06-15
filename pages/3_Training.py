@@ -3,6 +3,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 import joblib
 
+import streamlit as st
 st.title("3. Pelatihan Model")
 
 df = pd.read_csv("healthcare-dataset-stroke-data.csv")  # setelah preprocessing

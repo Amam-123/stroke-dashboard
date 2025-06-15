@@ -7,26 +7,23 @@ import seaborn as sns
 
 st.title("4. Evaluasi Model")
 
-# Load dataset hasil preprocessing
-df = pd.read_csv("healthcare-dataset-stroke-data.csv") 
-
-# Pisahkan fitur dan label
-X = df.drop("stroke", axis=1)
-y = df["stroke"]
-
-# Load model
+# Load data hasil split & model
+X_test = pd.read_csv("X_test.csv")
+y_test = pd.read_csv("y_test.csv")
 model = joblib.load("model_stroke.pkl")
 
 # Prediksi
-y_pred = model.predict(X)
+y_pred = model.predict(X_test)
 
 # Evaluasi
-st.subheader("Confusion Matrix")
-cm = confusion_matrix(y, y_pred)
-sns.heatmap(cm, annot=True, fmt='d', cmap="Blues")
-st.pyplot(plt.gcf())
-plt.clf()
-
 st.subheader("Classification Report")
-report = classification_report(y, y_pred, output_dict=True)
-st.dataframe(pd.DataFrame(report).transpose())
+report = classification_report(y_test, y_pred, output_dict=True)
+report_df = pd.DataFrame(report).transpose()
+st.dataframe(report_df)
+
+# Confusion Matrix
+st.subheader("Confusion Matrix")
+cm = confusion_matrix(y_test, y_pred)
+fig, ax = plt.subplots()
+sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", ax=ax)
+st.pyplot(fig)

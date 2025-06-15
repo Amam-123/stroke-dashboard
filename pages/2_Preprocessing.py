@@ -6,7 +6,7 @@ st.markdown("""
 - Encoding kolom `gender`, `smoking_status`, dst
 """)
 
-df = pd.read_csv("stroke.csv")
+df = pd.read_csv("healthcare-dataset-stroke-data.csv")
 df = df.dropna()
 df['gender'] = df['gender'].map({'Male': 1, 'Female': 0})
 

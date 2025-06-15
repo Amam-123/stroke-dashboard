@@ -1,21 +1,26 @@
-from sklearn.ensemble import RandomForestClassifier
+import streamlit as st
+import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
+from sklearn.ensemble import RandomForestClassifier
 import joblib
 
-import streamlit as st
-st.title("3. Pelatihan Model")
+st.title("3. Training Model")
 
-df = pd.read_csv("healthcare-dataset-stroke-data.csv")  # setelah preprocessing
-X = df.drop("stroke", axis=1)
+# Pastikan nama file sesuai dengan file di GitHub kamu
+df = pd.read_csv("healthcare-dataset-stroke-data.csv")  # atau sesuaikan jika sudah di-preprocessing
+
+# Contoh pemilihan fitur
+X = df[["age", "avg_glucose_level", "bmi"]]
 y = df["stroke"]
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+# Split dataset
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
+# Train model
 model = RandomForestClassifier()
 model.fit(X_train, y_train)
 
-acc = accuracy_score(y_test, model.predict(X_test))
-st.write("Akurasi Model:", acc)
+# Simpan model
+joblib.dump(model, "model_stroke.pkl")
 
-joblib.dump(model, "model.pkl")
+st.success("Model berhasil dilatih dan disimpan sebagai model_stroke.pkl")

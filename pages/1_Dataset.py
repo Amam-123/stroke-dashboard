@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 st.title("1. Dataset dan Visualisasi Awal")
 
-df = pd.read_csv("stroke.csv")  # sesuaikan nama file
+df = pd.read_csv("healthcare-dataset-stroke-data.csv")  # sesuaikan nama file
 
 st.write("### Contoh Data")
 st.dataframe(df.head())

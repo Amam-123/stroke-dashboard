@@ -5,7 +5,7 @@ import joblib
 
 st.title("3. Pelatihan Model")
 
-df = pd.read_csv("processed_stroke.csv")  # setelah preprocessing
+df = pd.read_csv("healthcare-dataset-stroke-data.csv")  # setelah preprocessing
 X = df.drop("stroke", axis=1)
 y = df["stroke"]
 

@@ -8,7 +8,7 @@ import seaborn as sns
 st.title("4. Evaluasi Model")
 
 # Load dataset hasil preprocessing
-df = pd.read_csv("healthcare-dataset-stroke-data.csv")  # Pastikan nama dan lokasi file sesuai
+df = pd.read_csv("healthcare-dataset-stroke-data.csv") 
 
 # Pisahkan fitur dan label
 X = df.drop("stroke", axis=1)

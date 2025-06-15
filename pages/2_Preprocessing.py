@@ -1,13 +1,15 @@
+import streamlit as st
+import pandas as pd
+
 st.title("2. Preprocessing Data")
 
-st.write("Langkah-langkah:")
-st.markdown("""
-- Menghapus missing value pada kolom `bmi`
-- Encoding kolom `gender`, `smoking_status`, dst
-""")
-
+# Contoh isi awal, nanti bisa kamu lengkapi:
 df = pd.read_csv("healthcare-dataset-stroke-data.csv")
-df = df.dropna()
-df['gender'] = df['gender'].map({'Male': 1, 'Female': 0})
 
-st.dataframe(df.head())
+# Preprocessing sederhana
+st.write("Jumlah data null:")
+st.write(df.isnull().sum())
+
+st.write("Dataset setelah drop NA:")
+df_clean = df.dropna()
+st.dataframe(df_clean)

@@ -8,7 +8,7 @@ from sklearn.metrics import classification_report, confusion_matrix, roc_auc_sco
 st.title("4. Evaluasi Model")
 
 # Load data dan model
-df = pd.read_csv("processed_stroke.csv")
+df = pd.read_csv("healthcare-dataset-stroke-data.csv")
 X = df.drop("stroke", axis=1)
 y = df["stroke"]
 
